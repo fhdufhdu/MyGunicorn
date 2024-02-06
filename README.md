@@ -11,6 +11,7 @@
 ```
 pip install django
 pip install djangorestframework
+python manage.py migrate
 ```
 
 ## 실행방법
