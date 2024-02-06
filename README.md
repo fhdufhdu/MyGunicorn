@@ -8,13 +8,13 @@
 - 워커 개수와 소켓 백로그 개수 조절 가능
 
 ## 설치
-```
+``` bash
 pip install django
 pip install djangorestframework
 python manage.py migrate
 ```
 
 ## 실행방법
-``` python
+``` bash
 python wsgi_server.py
 ```
