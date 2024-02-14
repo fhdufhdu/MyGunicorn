@@ -13,11 +13,6 @@ class MyGunicornHandler:
         self.app_path = app_path
         self.status_and_headers = {"status": 200, "headers": []}
 
-    @staticmethod
-    def run_on_process(ss: socket.socket, app_path: str):
-        handler = MyGunicornHandler(ss=ss, app_path=app_path)
-        handler.run()
-
     def run(self):
         try:
             c_proc = multiprocessing.current_process()
@@ -147,9 +142,8 @@ class MyGunicorn:
         self.ss.listen(backlog)
 
         for _ in range(worker):
-            Process(
-                target=MyGunicornHandler.run_on_process, args=(self.ss, app_path)
-            ).start()
+            handler = MyGunicornHandler(self.ss, app_path)
+            Process(target=handler.run).start()
 
     def close(self, signum, frame):
         print(f"shutdown: {signum}")
