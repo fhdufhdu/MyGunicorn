@@ -18,3 +18,11 @@ python manage.py migrate
 ``` bash
 python wsgi_server.py
 ```
+
+## 성능
+- 0.1초 단위로 요청 전송
+- 동시에 1000명 접속
+- worker = 16
+- backlog = 1000
+### 시험 결과
+![시험 결과 이미지](https://fhdufhdu.github.io/post/14/image-8.png)
